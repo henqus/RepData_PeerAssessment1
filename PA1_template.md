@@ -54,7 +54,7 @@ ggplot(stepsPerDay) +
         ggtitle("Distribution of total number of steps per day")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
+![](PA1_template_files/figure-html/Distribution_steps_per_day-1.png)<!-- -->
 
 The peak in the first bin (0 to 2000 steps) is caused by missing data in the data set. The mean of the number of steps per day is 9354.2 and the median is 10395. This is off course lower than in reality because of the missing data.
 
@@ -74,7 +74,7 @@ ggplot(stepsPerInterval) +
              title = "Average number of steps per timeinterval during the day")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+![](PA1_template_files/figure-html/Activity_profile-1.png)<!-- -->
 
 The average amount of steps per time interval peaks at 206.2 at 8:35 hours.
 
@@ -109,7 +109,7 @@ ggplot(act.i[1:288,]) +
              title = "Activity profile of 2012-11-01 after imputing data")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
+![](PA1_template_files/figure-html/Activity_profile_first_day_with_imputed_data-1.png)<!-- -->
 
 After imputing the missing data we recalculate the distribution of the daily activity.
 
@@ -124,7 +124,7 @@ ggplot(stepsPerDay.i) +
         ggtitle("Distribution of total number of steps per day after imputing missing data")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
+![](PA1_template_files/figure-html/Distribution_steps_per_day_with_imputed_data-1.png)<!-- -->
 
 With the missing data imputed the mean of the number of steps per day is 10766.2 and the median is 10766.2.
 
@@ -147,6 +147,6 @@ ggplot(steps, aes(interval, x)) +
         facet_grid(weekend ~ .)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
+![](PA1_template_files/figure-html/Activity_prifile_weendays_vs_weekend-1.png)<!-- -->
 
 It is clearly visible that activity starts a bit later in the weekend and less steps are taken in the morning rituals.

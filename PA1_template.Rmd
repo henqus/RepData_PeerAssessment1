@@ -10,7 +10,7 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, fig.keep = TRUE, options(scipen=999, digits=1))
 ```
- 
+
 **Used libraries**
 ```{r}
 library(ggplot2)
@@ -32,7 +32,7 @@ act$date <- ymd(act$date, quiet = TRUE)
 ```
 ## Mean total number of steps taken per day
 
-```{r}
+```{r Distribution_steps_per_day}
 stepsPerDay <- aggregate(act$steps, by=list(date=act$date), FUN = sum, na.rm=TRUE)
 
 ggplot(stepsPerDay) + 
@@ -46,7 +46,7 @@ The peak in the first bin (0 to 2000 steps) is caused by missing data in the dat
 
 ## Average daily activity pattern
 
-```{r}
+```{r Activity_profile}
 stepsPerInterval <- aggregate(act$steps, by=list(interval=act$interval), FUN = mean, na.rm=TRUE)
 peakSteps <- max(stepsPerInterval$x)
 peakInterval <- stepsPerInterval$interval[stepsPerInterval$x==peakSteps]
@@ -81,7 +81,7 @@ for (i in 1:length(act.i$steps)){
 
 Missing data was imputed by filling in the mean per interval over all meausered days. Consequently, fully missing days now look like the average daily activity pattern. See below the activity pattern of `r act$date[1]` after imputing the missing data.
 
-```{r}
+```{r Activity_profile_first_day_with_imputed_data}
 
 ggplot(act.i[1:288,]) + 
         geom_line(aes(interval/100,steps), col = "steelblue") +
@@ -94,7 +94,7 @@ ggplot(act.i[1:288,]) +
 
 After imputing the missing data we recalculate the distribution of the daily activity.
 
-```{r}
+```{r Distribution_steps_per_day_with_imputed_data}
 stepsPerDay.i <- aggregate(act.i$steps, by=list(date=act.i$date), FUN = sum, na.rm=TRUE)
 
 ggplot(stepsPerDay.i) + 
@@ -109,7 +109,7 @@ With the missing data imputed the mean of the number of steps per day is `r mean
 
 ## Differences in activity patterns between weekdays and weekends
 
-```{r}
+```{r Activity_prifile_weendays_vs_weekend}
 act.i$weekend <- factor(as.numeric(format(act.i$date, "%w")) == 0 | 
                            as.numeric(format(act.i$date, "%w")) == 6,
                        labels = c("weekday", "weekend"))
